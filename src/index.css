@@ -83,6 +83,7 @@
   background: #fff;
   border: none;
   border-radius: 50%;
+  font-size: 1.25rem;
 }
 
 .cart-container .cart-item .cart-item-amount .amount-btn:hover {
