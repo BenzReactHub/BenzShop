@@ -13,8 +13,25 @@ const initialState = {
 
 const AppProvider = (props) => {
     const [state, dispatch] = useReducer(reducer, initialState)
+    // 實現購物車功能函式
+    const clearCart = () => {
+        dispatch({ type: 'CLEAR_CART' })
+    }
+
+    const remove = (id) => {
+        dispatch({ type: 'REMOVE', payload: id })
+    }
+
+    const increase = (id) => {
+        dispatch({ type: 'INCREASE', payload: id })
+    }
+    const decrease = (id) => {
+        dispatch({ type: 'DECREASE', payload: id })
+    }
+
+
     return (
-        <AppContext.Provider value={{ ...state }}>
+        <AppContext.Provider value={{ ...state, clearCart, remove, increase, decrease }}>
             {props.children}
         </AppContext.Provider>
     )

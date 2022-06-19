@@ -3,8 +3,20 @@ import { useGlobalContext } from '../contexts/context'
 import CartItem from './CartItem.js'
 
 const CartContainer = () => {
-    const { cart, total } = useGlobalContext()
-    console.log(cart)
+    const { cart, total, clearCart } = useGlobalContext()
+    // console.log(cart)
+    if (cart.length === 0) {
+        return (
+            <section className="cart-container">
+                <div className='empty-cart'>
+                    <header>
+                        <h2>購物車</h2>
+                    </header>
+                    <h4>沒有選購的商品</h4>
+                </div>
+            </section>
+        )
+    }
     return (
         <section className='cart-container'>
             {/* cart header */}
@@ -24,7 +36,7 @@ const CartContainer = () => {
                     <h4>總價 </h4>
                     <span>${total}</span>
                 </div>
-                <button className='btn clear-btn' onClick={() => { console.log('清空購物車') }}>清空購物車</button>
+                <button className='btn clear-btn' onClick={() => { clearCart() }}>清空購物車</button>
             </footer>
         </section>
     )
