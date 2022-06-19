@@ -1,12 +1,14 @@
-import React, { createContext, useState, useContext, useReducer } from 'react'
+import React, { createContext, useContext, useReducer, useEffect } from 'react'
 import cartItems from '../data'
 import reducer from '../reducers/reducer'
+// const url = 'https://course-api.com/react-useReducer-cart-project'
 
 const AppContext = createContext()
 
 const initialState = {
     loading: false,
-    cart: cartItems,
+    // cart: cartItems,
+    cart: [],
     total: 0,
     amount: 0,
 }
@@ -29,7 +31,21 @@ const AppProvider = (props) => {
         dispatch({ type: 'DECREASE', payload: id })
     }
 
+    const fetchData = async () => {
+        dispatch({ type: 'LOADING' })
+        // const response = await fetch(url)
+        // const cart = await response.json()
+        // dispatch({ type: 'DISPLAY_ITEMS', payload: cart })
+        dispatch({ type: 'DISPLAY_ITEMS', payload: cartItems })
+    }
 
+    useEffect(() => {
+        dispatch({ type: 'GET_TOTALS' })
+    }, [state.cart])
+
+    useEffect(() => {
+        fetchData()
+    }, [])
     return (
         <AppContext.Provider value={{ ...state, clearCart, remove, increase, decrease }}>
             {props.children}

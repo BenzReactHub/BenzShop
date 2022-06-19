@@ -23,7 +23,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
+  padding: 15px 400px;
   background: #3172b3;
 }
 .nav-bar .nav-logo {
@@ -41,12 +41,11 @@
   position: relative;
   top: -0.9rem;
   right: 0.7rem;
-  width: 1.5rem;
-  height: 1.5rem;
   text-align: center;
   background-color: #fff;
   border-radius: 50%;
   font-size: 1.5rem;
+  padding: 0.0625rem 0.5rem;
 }
 
 .cart-container {
@@ -140,4 +139,19 @@
 .cart-footer .clear-btn:hover {
   background: #ffb5b5;
   color: #fff;
+}
+
+/* phone 手機尺寸 */
+/* 螢幕寬度小於500px時，背景就會變成紅色 */
+@media (max-width: 1200px) {
+  .nav-bar {
+    padding: 15px 20px;
+  }
+}
+
+@media (max-width: 850px) {
+  .cart-container {
+    width: 95%;
+    margin: 0 auto;
+  }
 }
